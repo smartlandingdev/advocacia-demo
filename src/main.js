@@ -36,9 +36,20 @@ document.querySelector('#app').innerHTML = `
       <a href="#areas" class="nav-link">Áreas de Atuação</a>
       <a href="#contato" class="nav-link">Contato</a>
       <a href="${WHATS}" target="_blank" class="nav-btn">WhatsApp</a>
+      <button class="nav-menu-btn" id="nav-menu-btn" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </nav>
+
+<div class="nav-mobile" id="nav-mobile">
+  <button class="nav-mobile-close" id="nav-mobile-close" aria-label="Fechar menu">✕</button>
+  <a href="#inicio" class="nav-mobile-link">Início</a>
+  <a href="#areas" class="nav-mobile-link">Áreas de Atuação</a>
+  <a href="#contato" class="nav-mobile-link">Contato</a>
+  <a href="${WHATS}" target="_blank" class="nav-mobile-link nav-mobile-link-whats">WhatsApp</a>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="inicio">
@@ -187,6 +198,14 @@ document.querySelector('#app').innerHTML = `
   </div>
 </footer>
 `
+
+// Mobile nav
+const mobileNav = document.getElementById('nav-mobile')
+const openMenu = () => mobileNav.classList.add('is-open')
+const closeMenu = () => mobileNav.classList.remove('is-open')
+document.getElementById('nav-menu-btn').addEventListener('click', openMenu)
+document.getElementById('nav-mobile-close').addEventListener('click', closeMenu)
+document.querySelectorAll('.nav-mobile-link').forEach(l => l.addEventListener('click', closeMenu))
 
 // Form submit handler
 document.querySelector('#form-contato').addEventListener('submit', e => {
