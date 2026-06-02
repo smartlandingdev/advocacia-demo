@@ -1,27 +1,57 @@
 import './style.css'
 
-const WHATS = 'https://wa.me/5561964832336'
+const WHATS_BASE = 'https://wa.me/5524974033403'
 
-const logoMark = (w = 34, h = 44) => `
-  <svg width="${w}" height="${h}" viewBox="0 0 68 88" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="2" y="8" width="52" height="56" rx="12" fill="#5FA5A0"/>
-    <rect x="12" y="18" width="32" height="38" rx="7" fill="white"/>
-    <rect x="32" y="44" width="22" height="20" fill="white"/>
-    <rect x="50" y="2" width="16" height="84" rx="8" fill="#5FA5A0"/>
-  </svg>`
+const whatsLink = (msg) => {
+  return `${WHATS_BASE}?text=${encodeURIComponent(msg)}`
+}
 
-const whatsIcon = `
-  <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+const WHATS_NAV     = whatsLink(`Olá, Bernardo! 👋\n\nVim pelo site Abbott Galvão Advocacia e gostaria de uma orientação jurídica.\n\nPoderia me ajudar?`)
+const WHATS_HERO    = whatsLink(`Olá, Bernardo! 👋\n\nVi o site de vocês e preciso de uma assessoria jurídica.\n\nPoderia me orientar?`)
+const WHATS_EXTRAJUD = whatsLink(`Olá, Bernardo! 👋\n\nVi no site que você é especialista em Direito Extrajudicial e gostaria de resolver meu caso em cartório.\n\nPode me ajudar?`)
+const WHATS_CONTATO = whatsLink(`Olá, Bernardo! 👋\n\nEntrei em contato pelo site Abbott Galvão Advocacia e gostaria de agendar uma consulta.\n\nQuando você teria disponibilidade?`)
+const WHATS_FLOAT   = whatsLink(`Olá, Bernardo! 👋\n\nVim pelo site Abbott Galvão Advocacia.\n\nGostaria de tirar uma dúvida jurídica, pode me atender?`)
+
+// fallback para mobile nav
+const WHATS = WHATS_NAV
+
+const whatsIcon = (size = 20) => `
+  <svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
   </svg>`
 
 const areas = [
-  { n: '01', title: 'Direito Civil', desc: 'Contratos, responsabilidade civil, obrigações e questões patrimoniais.' },
-  { n: '02', title: 'Direito Empresarial', desc: 'Sociedades, contratos mercantis, recuperação judicial e compliance.' },
-  { n: '03', title: 'Direito Administrativo', desc: 'Licitações, contratos públicos e processos administrativos.' },
-  { n: '04', title: 'Direito de Família', desc: 'Divórcio, guarda, alimentos, inventário e sucessões.' },
-  { n: '05', title: 'Direito Imobiliário', desc: 'Compra e venda, locações, regularização fundiária e due diligence.' },
-  { n: '06', title: 'Consultoria Jurídica', desc: 'Pareceres, análise de contratos e assessoria jurídica preventiva.' },
+  { n: '01', title: 'Direito Extrajudicial', desc: 'Divórcios, inventários e regularização de imóveis em cartório, sem processo judicial. Presidente da Comissão de Direito Extrajudicial da OAB de Resende, Porto Real e Itatiaia/RJ.', destaque: true },
+  { n: '02', title: 'Direito Imobiliário', desc: 'Regularização de imóveis, compra e venda, locações, usucapião e due diligence imobiliária.' },
+  { n: '03', title: 'Direito de Família', desc: 'Divórcio, guarda, alimentos e planejamento familiar, pela via judicial ou extrajudicial.' },
+  { n: '04', title: 'Direito Sucessório', desc: 'Inventários, testamentos, planejamento sucessório e partilha de bens por escritura pública.' },
+  { n: '05', title: 'Direito Trabalhista e Previdenciário', desc: 'Rescisões, reclamatórias trabalhistas e concessão de benefícios previdenciários.' },
+  { n: '06', title: 'Direito Civil', desc: 'Contratos, responsabilidade civil, cobranças e questões patrimoniais em geral.' },
+  { n: '07', title: 'Direito Empresarial', desc: 'Constituição de empresas, contratos mercantis, recuperação judicial e compliance.' },
+  { n: '08', title: 'Consultoria Jurídica', desc: 'Pareceres, análise de contratos e assessoria jurídica preventiva para pessoas físicas e jurídicas.' },
+]
+
+const diferenciais = [
+  {
+    num: '01',
+    titulo: 'Presidente da Comissão OAB',
+    texto: 'Bernardo preside a Comissão de Direito Extrajudicial da OAB de Resende, Porto Real e Itatiaia — referência técnica na região para soluções em cartório.',
+  },
+  {
+    num: '02',
+    titulo: 'Atuação em 3 Estados',
+    texto: 'Escritório com alcance nos estados do Rio de Janeiro, Distrito Federal e São Paulo, atendendo clientes presencialmente ou à distância.',
+  },
+  {
+    num: '03',
+    titulo: 'Solução sem Processo Judicial',
+    texto: 'Divórcios, inventários e regularizações de imóveis resolvidos em cartório: mais rápido, menos burocrático e com plena segurança jurídica.',
+  },
+  {
+    num: '04',
+    titulo: 'Atendimento Personalizado',
+    texto: 'Cada caso é tratado com rigor técnico e sigilo absoluto. O cliente nunca fala com estagiário — sempre com o advogado.',
+  },
 ]
 
 document.querySelector('#app').innerHTML = `
@@ -33,9 +63,10 @@ document.querySelector('#app').innerHTML = `
       <img src="/logo.png" alt="Abbott Galvão Advocacia" class="logo-img">
     </a>
     <div class="nav-right">
+      <a href="#diferenciais" class="nav-link">Sobre</a>
       <a href="#areas" class="nav-link">Áreas de Atuação</a>
       <a href="#contato" class="nav-link">Contato</a>
-      <a href="${WHATS}" target="_blank" class="nav-btn">WhatsApp</a>
+      <a href="${WHATS_NAV}" target="_blank" rel="noopener" class="nav-btn">WhatsApp</a>
       <button class="nav-menu-btn" id="nav-menu-btn" aria-label="Abrir menu">
         <span></span><span></span><span></span>
       </button>
@@ -43,32 +74,34 @@ document.querySelector('#app').innerHTML = `
   </div>
 </nav>
 
-<div class="nav-mobile" id="nav-mobile">
+<div class="nav-mobile" id="nav-mobile" role="dialog" aria-modal="true" aria-label="Menu de navegação">
   <button class="nav-mobile-close" id="nav-mobile-close" aria-label="Fechar menu">✕</button>
   <a href="#inicio" class="nav-mobile-link">Início</a>
+  <a href="#diferenciais" class="nav-mobile-link">Sobre</a>
   <a href="#areas" class="nav-mobile-link">Áreas de Atuação</a>
   <a href="#contato" class="nav-mobile-link">Contato</a>
-  <a href="${WHATS}" target="_blank" class="nav-mobile-link nav-mobile-link-whats">WhatsApp</a>
+  <a href="${WHATS_NAV}" target="_blank" rel="noopener" class="nav-mobile-link nav-mobile-link-whats">WhatsApp</a>
 </div>
 
 <!-- HERO -->
 <section class="hero" id="inicio">
   <div class="hero-left">
-    <p class="hero-label">Brasília, DF — OAB/DF</p>
+    <p class="hero-label">Resende/RJ — Atuação em RJ, DF e SP</p>
     <h1 class="hero-title">
-      Assessoria jurídica<br>com <em>precisão</em><br>e comprometimento.
+      Soluções jurídicas<br><em>rápidas, seguras</em><br>e sem burocracia.
     </h1>
     <div class="hero-rule"></div>
     <p class="hero-desc">
-      Atendimento personalizado, rigor técnico e sigilo absoluto
-      em cada caso. Soluções jurídicas pensadas para a sua realidade.
+      Especialista em Direito Extrajudicial, Imobiliário e Família.
+      Divórcios, inventários e regularização de imóveis resolvidos diretamente em cartório —
+      sem processo judicial, com agilidade e respaldo técnico de quem preside a Comissão de Direito Extrajudicial da OAB.
     </p>
     <div class="hero-actions">
-      <a href="${WHATS}" target="_blank" class="btn-whats">
-        ${whatsIcon}
+      <a href="${WHATS_HERO}" target="_blank" rel="noopener" class="btn-whats">
+        ${whatsIcon(18)}
         Falar pelo WhatsApp
       </a>
-      <a href="#contato" class="btn-outline">Enviar Mensagem</a>
+      <a href="#areas" class="btn-outline">Ver Áreas de Atuação</a>
     </div>
   </div>
   <div class="hero-right">
@@ -76,8 +109,68 @@ document.querySelector('#app').innerHTML = `
       <img src="/logo.png" alt="Abbott Galvão Advocacia" class="hero-logo-img">
     </div>
     <div class="hero-oab">
-      Bernardo Ururahy Abbott Galvão — OAB/DF<br>
-      www.ABBOTTGALVAO.jur.adv.br
+      Bernardo Ururahy Abbott Galvão<br>
+      Presidente — Comissão de Direito Extrajudicial<br>
+      OAB · Resende, Porto Real e Itatiaia/RJ
+    </div>
+  </div>
+</section>
+
+<!-- EXTRAJUDICIAL DESTAQUE -->
+<section class="extrajud" id="extrajudicial">
+  <div class="extrajud-inner">
+    <div class="extrajud-tag">Especialidade</div>
+    <h2 class="extrajud-title">Direito Extrajudicial:<br>resolva <em>sem ir ao tribunal.</em></h2>
+    <p class="extrajud-text">
+      Muitos problemas jurídicos que parecem complexos podem ser resolvidos direto no cartório —
+      sem abrir processo, sem anos de espera, sem desgaste. Divórcio consensual, inventário,
+      regularização de imóvel e partilha de bens podem ser formalizados por escritura pública
+      com total segurança jurídica.
+    </p>
+    <div class="extrajud-cards">
+      <div class="extrajud-card">
+        <div class="extrajud-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        </div>
+        <strong>Regularização de Imóveis</strong>
+        <span>Documentação, inventários e escrituras — resolva a situação do seu imóvel</span>
+      </div>
+      <div class="extrajud-card">
+        <div class="extrajud-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <strong>Divórcio em Cartório</strong>
+        <span>Separação consensual formalizada com rapidez e sem audiência judicial</span>
+      </div>
+      <div class="extrajud-card">
+        <div class="extrajud-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        </div>
+        <strong>Inventário Extrajudicial</strong>
+        <span>Partilha de bens e herança por escritura pública sem necessidade de processo</span>
+      </div>
+    </div>
+    <a href="${WHATS_EXTRAJUD}" target="_blank" rel="noopener" class="extrajud-cta">
+      ${whatsIcon(17)}
+      Consultar pelo WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section class="diferenciais" id="diferenciais">
+  <div class="dif-inner">
+    <div class="dif-header">
+      <div class="section-overline">Por que escolher</div>
+      <h2 class="dif-title">O que nos<br><em>distingue</em></h2>
+    </div>
+    <div class="dif-grid">
+      ${diferenciais.map(d => `
+        <div class="dif-card">
+          <div class="dif-num">${d.num}</div>
+          <h3 class="dif-card-title">${d.titulo}</h3>
+          <p class="dif-card-text">${d.texto}</p>
+        </div>`).join('')}
     </div>
   </div>
 </section>
@@ -91,17 +184,17 @@ document.querySelector('#app').innerHTML = `
         <h2 class="areas-heading">Onde podemos<br><em>atuar por você</em></h2>
       </div>
       <p class="areas-desc">
-        Assessoria jurídica nas principais esferas do direito, com enfoque
-        em soluções efetivas e resguardo pleno dos interesses do cliente.
+        Assessoria jurídica com ênfase em soluções extrajudiciais — mais rápidas, menos custosas e igualmente eficazes.
+        Atendimento em Resende/RJ e nas demais regiões do RJ, DF e SP.
       </p>
     </div>
     <div class="areas-list">
       ${areas.map(a => `
-        <div class="area-item">
+        <article class="area-item${a.destaque ? ' area-destaque' : ''}">
           <div class="area-n">${a.n}</div>
           <h3>${a.title}</h3>
           <p>${a.desc}</p>
-        </div>`).join('')}
+        </article>`).join('')}
     </div>
   </div>
 </section>
@@ -109,78 +202,58 @@ document.querySelector('#app').innerHTML = `
 <!-- CONTATO -->
 <section class="contato" id="contato">
   <div class="contato-inner">
-    <div class="contato-left">
+    <div class="contato-header">
       <div class="section-overline">Entre em Contato</div>
-      <h2 class="contato-title">Fale com<br><em>nosso escritorio</em></h2>
+      <h2 class="contato-title">Fale com<br><em>o escritório</em></h2>
       <p class="contato-desc">
-        Atendimento presencial em Brasília ou pelos canais abaixo.
-        Primeira conversa sem compromisso.
+        Atendimento presencial em Resende/RJ ou à distância, em RJ, DF e SP.
+        A primeira conversa é sem compromisso.
       </p>
-      <div class="contato-data">
-        <div class="cd-row">
-          <span class="cd-label">Advogado</span>
-          <span class="cd-value">Bernardo Ururahy Abbott Galvão</span>
-        </div>
-        <div class="cd-row">
-          <span class="cd-label">Endereço</span>
-          <span class="cd-value">STRC, Trecho 02, Conj. A, Lote 06<br>SIA, Brasília/DF — CEP 71225-521</span>
-        </div>
-        <div class="cd-row">
-          <span class="cd-label">Telefone</span>
-          <span class="cd-value">
-            <a href="tel:+556135339437">(61) 3533-9437</a> &nbsp;/&nbsp;
-            <a href="tel:+5561964832336">(61) 9648-2336</a>
-          </span>
-        </div>
-        <div class="cd-row">
-          <span class="cd-label">E-mail</span>
-          <span class="cd-value">
-            <a href="mailto:bernardo.abbott@adv.oabdf.org.br">bernardo.abbott@adv.oabdf.org.br</a>
-          </span>
-        </div>
-        <div style="margin-top:8px">
-          <a href="${WHATS}" target="_blank" class="btn-whats">
-            ${whatsIcon}
-            Iniciar conversa no WhatsApp
-          </a>
-        </div>
-      </div>
+      <a href="${WHATS_CONTATO}" target="_blank" rel="noopener" class="contato-whats-btn">
+        ${whatsIcon(20)}
+        Iniciar conversa no WhatsApp
+      </a>
     </div>
-
-    <form class="contato-form" id="form-contato">
-      <div class="row2">
-        <div class="fg">
-          <label>Nome</label>
-          <input type="text" name="nome" placeholder="Seu nome">
+    <div class="contato-cards">
+      <address class="contato-info-grid">
+        <div class="ci-card">
+          <div class="ci-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <div>
+            <span class="ci-label">Endereço</span>
+            <span class="ci-value">Av. Riachuelo, 356, Sala 02<br>Liberdade — Resende/RJ<br>CEP 27521-172</span>
+          </div>
         </div>
-        <div class="fg">
-          <label>Telefone</label>
-          <input type="tel" name="telefone" placeholder="(00) 00000-0000">
+        <div class="ci-card">
+          <div class="ci-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          </div>
+          <div>
+            <span class="ci-label">Telefone / WhatsApp</span>
+            <a href="tel:+5524974033403" class="ci-value ci-link">(24) 97403-3403</a>
+          </div>
         </div>
-      </div>
-      <div class="fg">
-        <label>E-mail</label>
-        <input type="email" name="email" placeholder="seu@email.com.br">
-      </div>
-      <div class="fg">
-        <label>Área de interesse</label>
-        <select name="area">
-          <option value="" disabled selected>Selecione</option>
-          <option>Direito Civil</option>
-          <option>Direito Empresarial</option>
-          <option>Direito Administrativo</option>
-          <option>Direito de Família e Sucessões</option>
-          <option>Direito Imobiliário</option>
-          <option>Consultoria Jurídica</option>
-          <option>Outra área</option>
-        </select>
-      </div>
-      <div class="fg">
-        <label>Mensagem</label>
-        <textarea name="mensagem" placeholder="Descreva brevemente sua situação..."></textarea>
-      </div>
-      <button type="submit" class="btn-enviar">Enviar Mensagem</button>
-    </form>
+        <div class="ci-card">
+          <div class="ci-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <div>
+            <span class="ci-label">E-mail</span>
+            <a href="mailto:bernardo.abbott@gmail.com" class="ci-value ci-link">bernardo.abbott@gmail.com</a>
+          </div>
+        </div>
+        <div class="ci-card">
+          <div class="ci-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-1.447-.894L15 9m0 8V9m0 0L9 7"/></svg>
+          </div>
+          <div>
+            <span class="ci-label">Estados de Atuação</span>
+            <span class="ci-value">Rio de Janeiro<br>Distrito Federal · São Paulo</span>
+          </div>
+        </div>
+      </address>
+    </div>
   </div>
 </section>
 
@@ -189,30 +262,47 @@ document.querySelector('#app').innerHTML = `
   <div class="foot-inner">
     <div>
       <img src="/logo-white.png" alt="Abbott Galvão Advocacia" class="foot-logo-img">
-      <div class="foot-sub">OAB/DF</div>
+      <div class="foot-sub">Resende/RJ · RJ · DF · SP</div>
     </div>
     <div class="foot-copy">
       &copy; ${new Date().getFullYear()} Abbott Galvão Advocacia<br>
-      Todos os direitos reservados
+      Todos os direitos reservados<br>
+      <span class="foot-dev">Desenvolvido por <a href="https://smartlanding.com.br" target="_blank" rel="noopener" class="foot-dev-link">SmartLanding</a></span>
     </div>
   </div>
 </footer>
+
+<!-- WHATSAPP FLUTUANTE -->
+<div class="whats-wrap" id="whats-wrap">
+  <div class="whats-bubble" id="whats-bubble">
+    Olá! Tire suas dúvidas agora 👋
+  </div>
+  <a href="${WHATS_FLOAT}" target="_blank" rel="noopener" class="whats-float" id="whats-float" aria-label="Conversar pelo WhatsApp">
+    ${whatsIcon(24)}
+    <span class="whats-float-label">WhatsApp</span>
+    <span class="whats-badge" id="whats-badge">1</span>
+  </a>
+</div>
 `
 
 // Mobile nav
 const mobileNav = document.getElementById('nav-mobile')
-const openMenu = () => mobileNav.classList.add('is-open')
-const closeMenu = () => mobileNav.classList.remove('is-open')
+const openMenu = () => { mobileNav.classList.add('is-open'); document.body.style.overflow = 'hidden' }
+const closeMenu = () => { mobileNav.classList.remove('is-open'); document.body.style.overflow = '' }
 document.getElementById('nav-menu-btn').addEventListener('click', openMenu)
 document.getElementById('nav-mobile-close').addEventListener('click', closeMenu)
 document.querySelectorAll('.nav-mobile-link').forEach(l => l.addEventListener('click', closeMenu))
 
-// Form submit handler
-document.querySelector('#form-contato').addEventListener('submit', e => {
-  e.preventDefault()
-  const data = new FormData(e.target)
-  const msg = encodeURIComponent(
-    `Olá, meu nome é ${data.get('nome')}.\nÁrea: ${data.get('area')}\n${data.get('mensagem')}`
-  )
-  window.open(`${WHATS}?text=${msg}`, '_blank')
-})
+// WhatsApp bubble após 3s
+setTimeout(() => {
+  const badge = document.getElementById('whats-badge')
+  const bubble = document.getElementById('whats-bubble')
+  badge.classList.add('is-visible')
+  bubble.classList.add('is-visible')
+
+  // ao clicar no botão, esconde badge e bubble
+  document.getElementById('whats-float').addEventListener('click', () => {
+    badge.classList.remove('is-visible')
+    bubble.classList.remove('is-visible')
+  }, { once: true })
+}, 3000)
