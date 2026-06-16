@@ -219,15 +219,16 @@ document.querySelector('#app').innerHTML = `
   <div class="sobre-inner">
     <div class="sobre-img-col" data-anim>
       <div class="sobre-img-frame">
-        <div class="sobre-img-placeholder" aria-label="Foto do advogado Bernardo Abbott Galvão"></div>
+        <img src="/foto-bernardo.jpg" alt="Bernardo Ururahy Abbott Galvão — Advogado em Resende/RJ" class="sobre-img" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <div class="sobre-img-placeholder" style="display:none" aria-hidden="true"></div>
         <div class="sobre-img-label">Bernardo Abbott Galvão · Advogado</div>
       </div>
     </div>
     <div class="sobre-content" data-anim data-delay="120">
       <div class="section-overline">O Advogado</div>
       <h2 class="sobre-title">Bernardo<br>Abbott <em>Galvão</em></h2>
-      <p class="sobre-lead">Texto de apresentação a confirmar com o cliente.</p>
-      <p class="sobre-text">Texto de apresentação a confirmar com o cliente.</p>
+      <p class="sobre-lead">Advogado com atuação sólida em Direito Extrajudicial, Imobiliário e de Família, Bernardo Ururahy Abbott Galvão construiu sua trajetória com foco em soluções que poupam tempo, dinheiro e desgaste para os seus clientes.</p>
+      <p class="sobre-text">Presidente da Comissão de Direito Extrajudicial da OAB de Resende, Porto Real e Itatiaia/RJ, é referência técnica na região para quem quer resolver divórcios, inventários e regularizações de imóveis diretamente em cartório — sem abrir processo judicial. Atende clientes em todo o estado do Rio de Janeiro, no Distrito Federal e em São Paulo, de forma presencial ou à distância, com o mesmo rigor e atenção de sempre.</p>
       <div class="sobre-badges">
         <div class="sobre-badge">
           <strong>Presidente</strong>
