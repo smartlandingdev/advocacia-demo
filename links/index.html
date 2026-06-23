@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0F2C2A" />
+  <title>Bernardo Abbott Galvão · Advocacia</title>
+  <meta name="description" content="Bernardo Ururahy Abbott Galvão — Advogado especialista em Direito Extrajudicial em Resende/RJ." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0F2C2A;
+      --teal:      #2E807B;
+      --teal-mid:  #6FA9A5;
+      --teal-light:#B5D8D6;
+      --white:     #FFFFFF;
+      --whats:     #25D366;
+      --whats-h:   #1EBF5A;
+      --trans:     0.28s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    html, body {
+      min-height: 100%;
+      background: var(--bg);
+      font-family: 'Montserrat', sans-serif;
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── HERO ─────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 92dvh;
+      min-height: 520px;
+      overflow: hidden;
+    }
+
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 15%;
+      display: block;
+    }
+
+    /* gradiente: foto visivel no topo, dissolve pro fundo escuro na base */
+    .hero-fade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(15,44,42,0.05)  0%,
+        rgba(15,44,42,0.10) 30%,
+        rgba(15,44,42,0.55) 60%,
+        rgba(15,44,42,0.88) 80%,
+        rgba(15,44,42,1.00) 100%
+      );
+    }
+
+    /* vinheta lateral sutil */
+    .hero-vignette {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, transparent 40%, rgba(15,44,42,0.45) 100%);
+    }
+
+    .hero-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 0 28px 48px;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    .hero-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--teal-light);
+      margin-bottom: 10px;
+      opacity: 0.85;
+    }
+
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(2.2rem, 8vw, 3.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      margin-bottom: 14px;
+    }
+
+    .hero-name em {
+      font-style: italic;
+      color: var(--teal-light);
+    }
+
+    .hero-desc {
+      font-size: 0.78rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.6);
+      max-width: 340px;
+      margin-bottom: 32px;
+    }
+
+    .hero-scroll {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    .hero-scroll-line {
+      width: 32px;
+      height: 1px;
+      background: rgba(255,255,255,0.2);
+    }
+
+    /* ── CONTEUDO ──────────────────────────────────────── */
+    .content {
+      background: var(--bg);
+      padding: 56px 28px 72px;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* ── SECTION LABEL ─────────────────────────────────── */
+    .section-label {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--teal-mid);
+      margin-bottom: 16px;
+    }
+
+    /* ── LINKS PRINCIPAIS ──────────────────────────────── */
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 52px;
+    }
+
+    .link {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 17px 20px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--white);
+      transition: transform var(--trans), background var(--trans), box-shadow var(--trans);
+    }
+
+    .link:hover { transform: translateX(4px); }
+    .link:active { transform: translateX(2px); }
+
+    .link--whats {
+      background: var(--whats);
+      box-shadow: 0 4px 24px rgba(37,211,102,0.25);
+    }
+    .link--whats:hover {
+      background: var(--whats-h);
+      box-shadow: 0 6px 32px rgba(37,211,102,0.38);
+    }
+
+    .link--teal {
+      background: rgba(46,128,123,0.15);
+      border: 1px solid rgba(46,128,123,0.3);
+    }
+    .link--teal:hover {
+      background: rgba(46,128,123,0.25);
+      border-color: rgba(46,128,123,0.55);
+    }
+
+    .link--ghost {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.75);
+    }
+    .link--ghost:hover {
+      background: rgba(255,255,255,0.07);
+      border-color: rgba(255,255,255,0.14);
+      color: var(--white);
+    }
+
+    .link-icon {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+    }
+
+    .link-body { flex: 1; line-height: 1.3; }
+    .link-body small {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 300;
+      opacity: 0.65;
+      margin-top: 2px;
+    }
+
+    .link-arrow {
+      flex-shrink: 0;
+      opacity: 0.3;
+      transition: opacity var(--trans), transform var(--trans);
+    }
+    .link:hover .link-arrow { opacity: 0.7; transform: translateX(3px); }
+
+    /* ── DIVISOR ───────────────────────────────────────── */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin-bottom: 36px;
+    }
+
+    /* ── AREAS ─────────────────────────────────────────── */
+    .areas {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 52px;
+    }
+
+    .area {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      text-decoration: none;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      transition: color var(--trans), padding-left var(--trans);
+    }
+
+    .area:last-child { border-bottom: none; }
+    .area:hover { color: var(--white); padding-left: 6px; }
+
+    .area-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .area-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.7rem;
+      color: var(--teal);
+      font-style: italic;
+      width: 20px;
+      flex-shrink: 0;
+    }
+
+    .area-arrow {
+      opacity: 0;
+      transform: translateX(-4px);
+      transition: opacity var(--trans), transform var(--trans);
+      color: var(--teal-mid);
+    }
+    .area:hover .area-arrow { opacity: 1; transform: translateX(0); }
+
+    /* ── FOOTER ────────────────────────────────────────── */
+    .footer {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-logo {
+      height: 22px;
+      opacity: 0.3;
+      filter: brightness(0) invert(1);
+      transition: opacity var(--trans);
+    }
+    .footer-logo:hover { opacity: 0.55; }
+
+    .footer-copy {
+      font-size: 0.62rem;
+      color: rgba(255,255,255,0.15);
+      letter-spacing: 0.04em;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <img src="/foto-bernardo.jpg" alt="Bernardo Abbott Galvao" class="hero-img" />
+    <div class="hero-vignette"></div>
+    <div class="hero-fade"></div>
+    <div class="hero-content">
+      <p class="hero-label">Advogado · OAB/RJ</p>
+      <h1 class="hero-name">Bernardo<br><em>Abbott Galvão</em></h1>
+      <p class="hero-desc">Especialista em soluções jurídicas extrajudiciais. Divórcios, inventários e regularizações em cartório, sem processo judicial.</p>
+      <a href="#links" class="hero-scroll">
+        <span class="hero-scroll-line"></span>
+        ver links
+      </a>
+    </div>
+  </section>
+
+  <!-- ── LINKS ── -->
+  <main class="content" id="links">
+
+    <p class="section-label">Fale comigo</p>
+    <div class="links">
+
+      <a href="https://wa.me/5524974033403?text=Ol%C3%A1%2C%20Bernardo%21%0A%0AVim%20pelo%20seu%20perfil%20e%20gostaria%20de%20uma%20orienta%C3%A7%C3%A3o%20jur%C3%ADdica.%20Poderia%20me%20ajudar%3F"
+         class="link link--whats" target="_blank" rel="noopener">
+        <span class="link-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+        </span>
+        <span class="link-body">
+          WhatsApp
+          <small>(24) 97403-3403</small>
+        </span>
+        <svg class="link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a href="https://www.abbottgalvao.jur.adv.br/" class="link link--teal" target="_blank" rel="noopener">
+        <span class="link-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+          </svg>
+        </span>
+        <span class="link-body">
+          Site Oficial
+          <small>abbottgalvao.jur.adv.br</small>
+        </span>
+        <svg class="link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a href="mailto:bernardo.abbott@gmail.com" class="link link--ghost">
+        <span class="link-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </span>
+        <span class="link-body">
+          E-mail
+          <small>bernardo.abbott@gmail.com</small>
+        </span>
+        <svg class="link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a href="https://maps.google.com/?q=Av.+Riachuelo,+356,+Sala+02,+Liberdade,+Resende,+RJ" class="link link--ghost" target="_blank" rel="noopener">
+        <span class="link-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+        </span>
+        <span class="link-body">
+          Escritório — Resende/RJ
+          <small>Av. Riachuelo, 356 · Sala 02 · Liberdade</small>
+        </span>
+        <svg class="link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+    </div>
+
+    <div class="divider"></div>
+
+    <p class="section-label">Áreas de Atuação</p>
+    <div class="areas">
+
+      <a href="https://wa.me/5524974033403?text=Ol%C3%A1%2C%20Bernardo%21%0A%0AGostaria%20de%20resolver%20meu%20caso%20em%20cart%C3%B3rio%2C%20sem%20processo%20judicial.%20Pode%20me%20ajudar%3F"
+         class="area" target="_blank" rel="noopener">
+        <span class="area-left">
+          <span class="area-num">01</span>
+          Direito Extrajudicial
+        </span>
+        <svg class="area-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a href="https://wa.me/5524974033403?text=Ol%C3%A1%2C%20Bernardo%21%0A%0APreciso%20de%20assessoria%20em%20Direito%20Imobili%C3%A1rio.%20Pode%20me%20ajudar%3F"
+         class="area" target="_blank" rel="noopener">
+        <span class="area-left">
+          <span class="area-num">02</span>
+          Direito Imobiliário
+        </span>
+        <svg class="area-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a href="https://wa.me/5524974033403?text=Ol%C3%A1%2C%20Bernardo%21%0A%0APreciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20Direito%20de%20Fam%C3%ADlia.%20Pode%20me%20ajudar%3F"
+         class="area" target="_blank" rel="noopener">
+        <span class="area-left">
+          <span class="area-num">03</span>
+          Direito de Família
+        </span>
+        <svg class="area-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a href="https://wa.me/5524974033403?text=Ol%C3%A1%2C%20Bernardo%21%0A%0APreciso%20de%20orienta%C3%A7%C3%A3o%20sobre%20invent%C3%A1rio%20ou%20planejamento%20sucess%C3%B3rio.%20Pode%20me%20ajudar%3F"
+         class="area" target="_blank" rel="noopener">
+        <span class="area-left">
+          <span class="area-num">04</span>
+          Direito Sucessório
+        </span>
+        <svg class="area-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a href="https://wa.me/5524974033403?text=Ol%C3%A1%2C%20Bernardo%21%0A%0APreciso%20de%20orienta%C3%A7%C3%A3o%20trabalhista%20ou%20previdenci%C3%A1ria.%20Pode%20me%20ajudar%3F"
+         class="area" target="_blank" rel="noopener">
+        <span class="area-left">
+          <span class="area-num">05</span>
+          Trabalhista e Previdenciário
+        </span>
+        <svg class="area-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a href="https://wa.me/5524974033403?text=Ol%C3%A1%2C%20Bernardo%21%0A%0APreciso%20de%20orienta%C3%A7%C3%A3o%20em%20Direito%20Civil.%20Pode%20me%20ajudar%3F"
+         class="area" target="_blank" rel="noopener">
+        <span class="area-left">
+          <span class="area-num">06</span>
+          Direito Civil
+        </span>
+        <svg class="area-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a href="https://wa.me/5524974033403?text=Ol%C3%A1%2C%20Bernardo%21%0A%0APreciso%20de%20assessoria%20em%20Direito%20Empresarial.%20Pode%20me%20ajudar%3F"
+         class="area" target="_blank" rel="noopener">
+        <span class="area-left">
+          <span class="area-num">07</span>
+          Direito Empresarial
+        </span>
+        <svg class="area-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+      <a href="https://wa.me/5524974033403?text=Ol%C3%A1%2C%20Bernardo%21%0A%0AGostaria%20de%20agendar%20uma%20consulta%20jur%C3%ADdica.%20Pode%20me%20ajudar%3F"
+         class="area" target="_blank" rel="noopener">
+        <span class="area-left">
+          <span class="area-num">08</span>
+          Consultoria Jurídica
+        </span>
+        <svg class="area-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+
+    </div>
+
+    <footer class="footer">
+      <a href="https://www.abbottgalvao.jur.adv.br/" target="_blank" rel="noopener">
+        <img src="/logo-white.png" alt="Abbott Galvão Advocacia" class="footer-logo" height="22" />
+      </a>
+      <p class="footer-copy">
+        Abbott Galvão Advocacia<br>
+        © 2025 · Todos os direitos reservados
+      </p>
+    </footer>
+
+  </main>
+
+</body>
+</html>
