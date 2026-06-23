@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.abbottgalvao.jur.adv.br/sitemap.xml
+Sitemap: https://www.abbottgalvao.adv.br/linkssitemap.xml
